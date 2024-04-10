@@ -1,0 +1,42 @@
+import time
+# with open( "main.txt",  "w" ) as f :
+#    f.write(input("test:")/n)
+
+def read_specific_line():
+  with open("main.txt", 'r') as file:
+      lines = file.readlines()
+  return lines
+
+
+print("welcome! choose an action: ")
+print("")
+print("1: read tweets")
+print("2: post tweets")
+print("")
+choice = input("input ur choice: ")
+choice = int(choice)
+if choice == 1: 
+  print("please wait")
+  time.sleep(2)
+  with open( "main.txt",  "r" ) as f :
+    leng = len(f.read().splitlines())
+  print("number of posts: ", leng)
+  if leng != 0:
+    ps = input("enter number from 1 to " + str(leng) + ": ")
+    with open( "main.txt",  "r" ) as f :
+      print("")
+    lines = read_specific_line()
+    print(lines[int(ps) - 1].strip())  
+    read_specific_line()
+  else:
+    print("nothing :(")
+
+elif choice == 2:
+  print("Enter your post below:")
+  post = input("Text not exceeding 100 chars: ")
+  nam = input("Your name: ")
+  finel = (nam + " : " + post)
+  with open ( "main.txt", "a") as f:
+    f.write(finel+"\n")
+
+  print("posted.")
